@@ -24,10 +24,9 @@ int Turn(int chamber, int blanks, int liveRounds) {
 }
 
 int main() {
-    // Seed the random number generator with current time
-    srand(time(NULL));
     
-    // Initialize variables
+    
+    // Initialize and create variables
     int currentPlayer = 1; // Player 1 starts first
     int chamber;
     int choice;
@@ -42,8 +41,14 @@ int main() {
         blanks = rand() % (MAX_BLANKS - MIN_BLANKS + 1) + MIN_BLANKS;
         liveRounds = CHAMBER - blanks;
         
-        
-    while (player1Lives > 0 && player2Lives > 0) {
+    
+     while (player1Lives > 0 && player2Lives > 0) {
+         
+         //resets round after all live rounds are fired
+         if (liveRounds == 0 ){
+        blanks = rand() % (MAX_BLANKS - MIN_BLANKS + 1) + MIN_BLANKS;
+        liveRounds = CHAMBER - blanks;
+        }
         
 
         printf("\nPlayer 1 lives: %d\n", player1Lives);
@@ -51,18 +56,18 @@ int main() {
         printf("There are %d blanks and %d live rounds.\n", blanks, liveRounds);
 
         printf("\nPlayer %d's turn.\n", currentPlayer);
-        printf("Enter 1 to shoot yourself or 2 to shoot your opponent: ");
+        printf("Enter 1 to try your luck or 2 to try your opponents luck: ");
         scanf("%d", &choice);
 
         
 
         if (choice == 1) {
-            // Determine the chamber to fire
+            // Random chamber to fire
              chamber = rand() % CHAMBER + 1;
-            // Simulate firing the gun for the current player
+         
             if (Turn(chamber, blanks, liveRounds)) {
                 // If the bullet chamber matches, the player loses a life
-                printf("Player %d is dead!\n", currentPlayer);
+                printf("Player %d has lost a life!\n", currentPlayer);
                 if (currentPlayer == 1) {
                     player1Lives--;
                     liveRounds --;
@@ -76,12 +81,12 @@ int main() {
                 blanks --;
             }
         } else if (choice == 2) {
-            // Determine the chamber to fire
+            // Random chamber to fire
                 chamber = rand() % CHAMBER + 1;
-            // Simulate firing the gun for the opponent
+            
             if (Turn(chamber, blanks, liveRounds)) {
-                // If the bullet chamber matches, the opponent loses a life
-                printf("Your opponent is dead!\n");
+                // If the chamber matches the opponent loses a life
+                printf("Your opponent has lost a life!\n");
                 liveRounds--;
                 if (currentPlayer == 1) {
                     player2Lives--;
@@ -89,20 +94,24 @@ int main() {
                     player1Lives--;
                 }
             } else {
-                // If the bullet chamber doesn't match, opponent survives
+                // If the chamber doesn't match the opponent survives
                 printf("Your opponent survived!\n");
                 blanks --;
             }
-        } else {
+        
+        } 
+        else {
             printf("Invalid choice. Please enter 1 or 2.\n");
             continue;
         }
 
-        // Switch player
+        // Switches player
         currentPlayer = (currentPlayer == 1) ? 2 : 1;
     }
+    
+    
 
-    // Display the winner
+    // Displays the winner
     if (player1Lives > 0) {
         printf("\nPlayer 1 wins!\n");
     } else {
