@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+
+//eliminating magic numbers in the code
 #define MIN_BLANKS 1
 #define MAX_BLANKS 5
 #define MIN_AMMO 1
@@ -9,6 +11,7 @@
 #define STARTING_LIVES 3
 #define CHAMBER 6
 
+//creates the chmaber of rounds in the game 
 int Turn(int chamber, int blanks, int liveRounds) {
     // Random chance
     int bulletChamber = rand() % (blanks + liveRounds) + 1;
