@@ -11,7 +11,7 @@
 #define STARTING_LIVES 3
 #define CHAMBER 6
 
-//creates the chmaber of rounds in the game 
+//creates the chamber of rounds in the game 
 int Turn(int chamber, int blanks, int liveRounds) {
     // Random chance
     int bulletChamber = rand() % (blanks + liveRounds) + 1;
