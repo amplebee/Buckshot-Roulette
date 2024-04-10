@@ -1,4 +1,4 @@
-
+#Buckshot Roulette
 
 (this code is made for C)
 
@@ -12,5 +12,8 @@ after that the game will inform the loser if their shot was a blank or a live ro
 this will keep going on continuously until 1 remains with all lives....
 
 good luck and may luck be on your side!
+
+after that explanation, here is an example of a flowchart of the game rules and how it operates
+enjoy!
 
 ![flowchart](https://github.com/amplebee/Buckshot-Roulette/assets/161452724/1ef6b757-c372-4416-bc8f-ca0fbe19f4ea)
