@@ -1,4 +1,4 @@
-#Buckshot Roulette#
+#Buckshot Roulette
 
 (this code is made for C)
 
